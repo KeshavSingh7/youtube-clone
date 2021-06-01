@@ -1,2 +1,0 @@
-(this["webpackJsonpyoutube-clone"]=this["webpackJsonpyoutube-clone"]||[]).push([[0],{9:function(e,t,n){"use strict";n.r(t);var c=n(1),o=n.n(c),r=n(3),u=n.n(r),s=n(0);var b=function(){return Object(s.jsx)(s.Fragment,{children:Object(s.jsx)("h1",{children:"YouTube Clone"})})};u.a.render(Object(s.jsx)(o.a.StrictMode,{children:Object(s.jsx)(b,{})}),document.getElementById("root"))}},[[9,1,2]]]);
-//# sourceMappingURL=main.7ed0c978.chunk.js.map
