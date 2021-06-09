@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import youtube from './api/youtubeAPI';
 import SearchBar from './components/SearchBar';
 import CurrentVideo from './components/CurrentVideo';
@@ -20,29 +20,36 @@ function App() {
     });
 
     setCurrentVideo(videoData.data.items[0]);
-    setVideoList(videoData.data.items);
+    setVideoList(videoData.data.items.splice(1, 4));
   }
 
   useEffect(() => {
-  }, [currentVideo])
+  }, [currentVideo, videoList])
+
+
+  //console.log(currentVideo, videoList);
 
   return (
     <>
       <Grid container justify="center" spacing={0}>
-        <Grid item xs={12}>
-          <Grid container spacing={0}>
+        <Grid item sm={12}>
+          <Grid container spacing={2}>
             <Grid item xs={12}>
               {/* SearchBar */ }
               <SearchBar parentCallback={callback} />
             </Grid>
-          </Grid>
-          <Grid item xs={8}>
-              {/* Currently playing video */}
-              <CurrentVideo data={currentVideo} />
-          </Grid>
-          <Grid item xs={4}>
-              {/* Video suggestion List */}
-              <VideoSuggestionList data={videoList} />
+            <Grid item sm={8}>
+                {/* Currently playing video */}
+                {
+                  (currentVideo === undefined) ? (<Typography variant="h2">Loading......</Typography>) : (<CurrentVideo data={currentVideo} />)
+                }
+            </Grid>
+            <Grid item sm={4}>
+                {/* Video suggestion List */}
+                {
+                  videoList && <VideoSuggestionList data={videoList} />
+                }
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
