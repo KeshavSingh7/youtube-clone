@@ -3,7 +3,7 @@ import { Paper, Typography } from '@material-ui/core';
 
 const CurrentVideo = ({ data }) => {
     
-    const url = `http://www.youtube.com/embed/${data.id.videoId}`;
+    const url = `https://www.youtube.com/embed/${data.id.videoId}`;
 
     return (
         <>
