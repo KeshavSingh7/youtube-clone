@@ -7,7 +7,7 @@ import VideoSuggestionList from './components/VideoSuggestionList';
 
 function App() {
   const [currentVideo, setCurrentVideo] = useState();
-  const [videoList, setVideoList] = useState();
+  const [videoList, setVideoList] = useState([]);
 
   const callback = async (value) => {
     const videoData = await youtube.get('search', {
@@ -20,14 +20,12 @@ function App() {
     });
 
     setCurrentVideo(videoData.data.items[0]);
-    setVideoList(videoData.data.items.splice(1, 4));
+    setVideoList(videoData.data.items);
   }
 
   useEffect(() => {
-  }, [currentVideo, videoList])
+  }, [currentVideo])
 
-
-  //console.log(currentVideo, videoList);
 
   return (
     <>
@@ -47,7 +45,7 @@ function App() {
             <Grid item sm={4}>
                 {/* Video suggestion List */}
                 {
-                  videoList && <VideoSuggestionList data={videoList} />
+                  videoList && <VideoSuggestionList cur={currentVideo} list={videoList} setCur={setCurrentVideo} />
                 }
             </Grid>
           </Grid>
